@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import polars as pl
+#import polars as pl
 from ydata_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 from sklearn.linear_model import LogisticRegression, LinearRegression
@@ -146,3 +146,4 @@ if upf is not None:
                 prediction = model.predict(input_filedata)[0]
 
                 st.success(f"Predicted Value: {prediction}")
+
