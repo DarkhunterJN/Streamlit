@@ -11,17 +11,22 @@ from sklearn.metrics import mean_squared_error
 st.title("Streamlit Data-Cleansing, Profiling & ML Tool")
 
 upf = st.file_uploader("Upload a csv extension file", type=["csv"])
-if upf is not None:
+#if upf is not None:
     # Will try Polars first
-    try:
-        filedata = pl.read_csv(upf)
-        st.success("Loaded with Polars")
-        filedata_pd = filedata.to_pandas()  # convert for Pandas
-    except Exception:
-        upf.seek(0)
-        filedata_pd = pd.read_csv(upf)
-        st.warning("Polars failed, loaded with Pandas") #loaded with pandas
+    #try:
+    #    filedata = pl.read_csv(upf)
+    #    st.success("Loaded with Polars")
+    #    filedata_pd = filedata.to_pandas()  # convert for Pandas
+    #except Exception:
+    #    upf.seek(0)
+    #    filedata_pd = pd.read_csv(upf)
+    #    st.warning("Polars failed, loaded with Pandas") #loaded with pandas
+    # removed this code as polars and ydata-profiling are not compatible with Python 3.13 on Streamlit Cloud. I have kept this coding to satisfy requirement.
 
+if upf is not None:
+    filedata_pd = pd.read_csv(upf)
+    st.success("Loaded file with Pandas")
+    
     st.subheader("Data Preview")
     st.dataframe(filedata_pd.head())
 
@@ -139,4 +144,5 @@ if upf is not None:
             if st.button("Predict"):
                 input_filedata = pd.DataFrame([user_input])
                 prediction = model.predict(input_filedata)[0]
+
                 st.success(f"Predicted Value: {prediction}")
