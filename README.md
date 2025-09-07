@@ -53,3 +53,29 @@ Profiling report generation is cached to avoid recomputation when data doesn’t
 
 Lazy operations:
 Polars supports lazy execution, which minimises memory overhead for very large CSVs.
+
+References:
+https://www.geeksforgeeks.org/python/a-beginners-guide-to-streamlit/
+https://docs.pola.rs/api/python/stable/reference/dataframe/index.html
+streamlit, pandas, polars, machine learing python, linear regression, losictic regression youtube videos
+https://www.geeksforgeeks.org/pandas/pandas-tutorial/
+https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.to_pandas.html
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html
+https://www.geeksforgeeks.org/python/data-normalization-with-pandas/
+https://www.geeksforgeeks.org/python/pandas-find-unique-values-from-multiple-columns/
+https://www.datacamp.com/tutorial/pandas-profiling-ydata-profiling-in-python-guide
+https://www.analyticsvidhya.com/blog/2021/06/generate-reports-using-pandas-profiling-deploy-using-streamlit/#h-step-1-install-the-streamlit-pandas-profiling
+https://pypi.org/project/streamlit-ydata-profiling/
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html
+https://medium.com/@amit25173/how-to-use-to-csv-step-by-step-guide-94e1f9d81be1
+https://sentry.io/answers/write-a-python-pandas-dataframe-to-a-csv-file/
+https://docs.streamlit.io/develop/api-reference/widgets/st.download_button
+https://medium.com/@kiprotich01/5-python-libraries-for-machine-learning-and-predictive-analytics-d7af51816200
+https://www.geeksforgeeks.org/machine-learning/ml-linear-regression/
+https://scikit-learn.org/stable/auto_examples/classification/plot_classification_probability.html#sphx-glr-auto-examples-classification-plot-classification-probability-py
+https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/
+https://www.geeksforgeeks.org/maths/mean-squared-error/
+https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/
+https://docs.streamlit.io/develop/concepts/architecture/caching
