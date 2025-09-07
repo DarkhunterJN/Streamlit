@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 #import polars as pl
-#from ydata_profiling import ProfileReport
-from pandas_profiling import ProfileReport
+from ydata_profiling import ProfileReport
+#from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.metrics import accuracy_score
@@ -75,23 +75,24 @@ if upf is not None:
 
      # --- Profiling Report ---
     # ydata profiling is not compatible with the latest Python version and will not deploy on Streamlit Cloud. Kept this code to satisfy the requirement.
-    #@st.cache_data
-    #def generate_profile(data):
-        #return ProfileReport(data, title="Profiling Report", explorative=True)
-    
-    #st.subheader("Profiling Report")
-    #with st.spinner("Generating profiling report..."):
-    #    profile = generate_profile(filedata_pd)
-    #st_profile_report(profile)
-
     @st.cache_data
     def generate_profile(data):
-        return ProfileReport(data, explorative=True)
+        return ProfileReport(data, title="Profiling Report", explorative=True)
     
     st.subheader("Profiling Report")
     with st.spinner("Generating profiling report..."):
         profile = generate_profile(filedata_pd)
     st_profile_report(profile)
+
+    #@st.cache_data
+    #def generate_profile(data):
+        #return ProfileReport(data, explorative=True)
+
+    #Tried pandas profiling. Gives error pandas profiling not found as in the latest version, it has been changed to ydata Profiling 
+    #st.subheader("Profiling Report")
+    #with st.spinner("Generating profiling report..."):
+        #profile = generate_profile(filedata_pd)
+    #st_profile_report(profile)
 
     # Download cleaned CSV
     st.download_button(
@@ -157,5 +158,6 @@ if upf is not None:
                 prediction = model.predict(input_filedata)[0]
 
                 st.success(f"Predicted Value: {prediction}")
+
 
 
