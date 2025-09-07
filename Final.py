@@ -84,11 +84,11 @@ if upf is not None:
         profile = generate_profile(filedata_pd)
     st_profile_report(profile)
 
+    #Tried pandas profiling. Gives error pandas profiling not found as in the latest version, it has been changed to ydata Profiling 
     #@st.cache_data
     #def generate_profile(data):
         #return ProfileReport(data, explorative=True)
 
-    #Tried pandas profiling. Gives error pandas profiling not found as in the latest version, it has been changed to ydata Profiling 
     #st.subheader("Profiling Report")
     #with st.spinner("Generating profiling report..."):
         #profile = generate_profile(filedata_pd)
@@ -158,6 +158,7 @@ if upf is not None:
                 prediction = model.predict(input_filedata)[0]
 
                 st.success(f"Predicted Value: {prediction}")
+
 
 
 
