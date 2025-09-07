@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-#import polars as pl
+import polars as pl
 from ydata_profiling import ProfileReport
 #from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
@@ -12,24 +12,24 @@ from sklearn.metrics import mean_squared_error
 st.title("Streamlit Data-Cleansing, Profiling & ML Tool")
 
 upf = st.file_uploader("Upload a csv extension file", type=["csv"])
-#if upf is not None:
+if upf is not None:
     # Will try Polars first
-    #try:
-    #    filedata = pl.read_csv(upf)
-    #    st.success("Loaded with Polars")
-    #    filedata_pd = filedata.to_pandas()  # convert for Pandas
-    #except Exception:
-    #    upf.seek(0)
-    #    filedata_pd = pd.read_csv(upf)
-    #    st.warning("Polars failed, loaded with Pandas") #loaded with pandas
+    try:
+        filedata = pl.read_csv(upf)
+        st.success("Loaded with Polars")
+        filedata_pd = filedata.to_pandas()  # convert for Pandas
+    except Exception:
+        upf.seek(0)
+        filedata_pd = pd.read_csv(upf)
+        st.warning("Polars failed, loaded with Pandas") #loaded with pandas
     # removed this code as polars and ydata-profiling are not compatible with Python 3.13 on Streamlit Cloud. I have kept this coding to satisfy requirement.
 
-if upf is not None:
-    filedata_pd = pd.read_csv(upf)
-    st.success("Loaded file with Pandas")
-    
-    st.subheader("Data Preview")
-    st.dataframe(filedata_pd.head())
+#if upf is not None:
+    #filedata_pd = pd.read_csv(upf)
+    #st.success("Loaded file with Pandas")
+
+    #st.subheader("Data Preview")
+    #st.dataframe(filedata_pd.head())
 
     st.subheader("Data Cleaning Options")
 
@@ -73,7 +73,7 @@ if upf is not None:
     st.subheader("Cleaned Data Preview")
     st.dataframe(filedata_pd.head())
 
-     # --- Profiling Report ---
+    # --- Profiling Report ---
     # ydata profiling is not compatible with the latest Python version and will not deploy on Streamlit Cloud. Kept this code to satisfy the requirement.
     @st.cache_data
     def generate_profile(data):
@@ -84,11 +84,11 @@ if upf is not None:
         profile = generate_profile(filedata_pd)
     st_profile_report(profile)
 
-    #Tried pandas profiling. Gives error pandas profiling not found as in the latest version, it has been changed to ydata Profiling 
+    #Tried pandas profiling. Gives error pandas profiling not found as in the latest version, it has been changed to ydata Profiling
     #@st.cache_data
     #def generate_profile(data):
         #return ProfileReport(data, explorative=True)
-
+    
     #st.subheader("Profiling Report")
     #with st.spinner("Generating profiling report..."):
         #profile = generate_profile(filedata_pd)
@@ -156,8 +156,8 @@ if upf is not None:
             if st.button("Predict"):
                 input_filedata = pd.DataFrame([user_input])
                 prediction = model.predict(input_filedata)[0]
-
                 st.success(f"Predicted Value: {prediction}")
+
 
 
 
