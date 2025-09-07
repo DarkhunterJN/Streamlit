@@ -2,5 +2,6 @@ streamlit
 pandas
 polars
 ydata-profiling
+pandas-profiling
 streamlit-pandas-profiling
 scikit-learn
