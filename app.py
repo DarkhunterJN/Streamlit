@@ -45,10 +45,10 @@ if upf is not None:
         num_cols = filedata_pd.select_dtypes(include="number").columns
         if len(num_cols) > 0:
             for col in num_cols:
-             min_val = filedata_pd[col].min()
-             max_val = filedata_pd[col].max()
-            if min_val != max_val:  # to avoid division by zero
-                filedata_pd[col] = (filedata_pd[col] - min_val) / (max_val - min_val)
+                 min_val = filedata_pd[col].min()
+                 max_val = filedata_pd[col].max()
+                 if min_val != max_val:  # to avoid division by zero
+                     filedata_pd[col] = (filedata_pd[col] - min_val) / (max_val - min_val)
             st.success("Normalized numeric columns")
         else:
             st.warning("No numeric columns found")
@@ -137,4 +137,5 @@ if upf is not None:
             if st.button("Predict"):
                 input_filedata = pd.DataFrame([user_input])
                 prediction = model.predict(input_filedata)[0]
+
                 st.success(f"Predicted Value: {prediction}")
